@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    background-color: #181A1B;
+    color: white;
+    font-family: Consolas;
+}
+
+nav {
+    height: auto;
+    background-color: #60686C;
+    display: block;
+    margin: 0;
+    padding: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+nav > a {
+    color: white;
+    margin-right: 1rem;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+nav > a:hover {
+    color: #FFD700;
+}
+
+.nav-right {
+    float: right;
+}
