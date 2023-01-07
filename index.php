@@ -1,6 +1,12 @@
 <?php
-require_once "db/db_utils.php";
-require_once "components.php";
+    require_once "db/db_utils.php";
+    require_once "components.php";
+
+    session_start();
+    $u;
+    if (isset($_SESSION["user"])) {
+        $u = unserialize($_SESSION["user"]);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +21,12 @@ require_once "components.php";
 <body>
     <?php
         echo navbar();
+
+        if (!empty($u)) {
+            echo $u->getUsername();
+            echo $u->isMod();
+        }
     ?>
+
 </body>
 </html>

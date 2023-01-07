@@ -45,8 +45,8 @@ input:focus{
 }
 
 .btn:hover {
-    background-color: #dab900;
-    color: #a57d18;
+    color: #FFD700;
+    background-color: #a57d18;
 }
 
 label {
@@ -92,4 +92,20 @@ label input:checked ~ .checkbox:after {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.message {
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 5rem;
+}
+
+.error {
+    color: #FF5733;
+}
+
+.success {
+    color: #33FF44;
 }

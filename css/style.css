@@ -15,12 +15,17 @@ nav {
     padding-right: 5rem;
 }
 
-nav > a {
+nav > a, nav > p {
     color: white;
     margin-right: 1rem;
     font-weight: 600;
     font-size: 18px;
     text-decoration: none;
+}
+
+nav > p, nav > span {
+    user-select: none;
+    margin: 0 1rem 0 0;
 }
 
 nav > a:hover {
