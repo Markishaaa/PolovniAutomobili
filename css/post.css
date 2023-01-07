@@ -1,0 +1,42 @@
+.outer {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    margin-top: 5rem;
+    background-color: #535d63;
+    width: 70%;
+    padding: 1rem;
+    box-shadow: 5px 5px #424242;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 5rem;
+}
+
+input, select, textarea {
+    margin-top: 0;
+}
+
+label {
+    margin-top: 1rem;
+    margin-left: 5px;
+    margin-bottom: 3px;
+}
+
+.description {
+    resize: none;
+    min-height: 8rem;
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #323a4d;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+  }

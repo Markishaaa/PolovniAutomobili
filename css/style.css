@@ -5,6 +5,10 @@ body {
     font-family: Consolas;
 }
 
+h1, label {
+    user-select: none;
+}
+
 nav {
     height: auto;
     background-color: #60686C;
@@ -13,6 +17,7 @@ nav {
     padding: 1rem;
     padding-left: 5rem;
     padding-right: 5rem;
+    user-select: none;
 }
 
 nav > a, nav > p {
@@ -34,4 +39,118 @@ nav > a:hover {
 
 .nav-right {
     float: right;
+}
+
+.label-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 45px;
+    margin-top: 1rem;
+    margin-left: 3px;
+    font-size: 20px;
+}
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+.checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+    background-color: #3D4244;
+}
+
+.label-checkbox .checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.label-checkbox input:checked ~ .checkbox:after {
+    display: block;
+}
+
+.checkbox:after {
+    left: 8px;
+    bottom: 5px;
+    width: 6px;
+    height: 12px;
+    border: solid #FFD700;
+    border-width: 0 4px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.message {
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 5rem;
+}
+
+.error {
+    color: #FF5733;
+}
+
+.success {
+    color: #33FF44;
+}
+
+.btn {
+    font-weight: 900;
+    border-color: white;
+    color: #8B968D;
+    font-family: Verdana;
+    font-size: 1.1rem;
+}
+
+.btn:hover {
+    color: #FFD700;
+    background-color: #a57d18;
+}
+
+input, select, textarea {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.5rem 0rem 0.5rem 0.7rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #3D4244;
+    border-radius: 10px;
+    border: 0;
+    caret-color: #FFD700;
+    color: white;
+}
+
+select {
+    padding-left: 0.5rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+}
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #1E1E1E;
+    border-left: 1px solid #393939;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #424242;
+    border-left: 1px solid #525252;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4F4F4F;
 }

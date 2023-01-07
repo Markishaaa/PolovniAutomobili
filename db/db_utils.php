@@ -35,7 +35,7 @@
                 $st->execute();
 
                 $st->setFetchMode(PDO::FETCH_ASSOC);
-                    return $st->fetchAll();
+                return $st->fetchAll();
             } catch (PDOException $e) {
                 return array();
             }
@@ -85,7 +85,107 @@
             }
         }
 
-        
+        public function addCar($fuelId, $bodyId, $manufactId, $year, $price, $description, $isNew, $imgUrl, $phoneNumber, $email, $model) {
+            try {
+                $username = $_COOKIE["username"];
+                $sql = "INSERT INTO " . TBL_CAR_INFO . " ("
+                        . CCI_FUEL_ID . ", " . CCI_CAR_BODY_ID . ", "
+                        . CCI_MANUFACTURER_ID . ", " . CCI_YEAR . ", "
+                        . CCI_PRICE . ", " . CCI_DESCRIPTION . ", "
+                        . CCI_IS_NEW . ", " . CCI_IMAGE_URL . ", "
+                        . CCI_PHONE_NUMBER . ", " . CCI_USERNAME  . ", "
+                        . CCI_EMAIL . ", " . CCI_MODEL . ")"
+                        . "VALUES (:fuelId, :bodyId, :manufactId, :year, :price, :description, :isNew, :imgUrl, :phoneNumber, :username, :email, :model)";
+
+                $st = $this->conn->prepare($sql);
+                $st->bindValue("fuelId", $fuelId, PDO::PARAM_INT);
+                $st->bindValue("bodyId", $bodyId, PDO::PARAM_INT);
+                $st->bindValue("manufactId", $manufactId, PDO::PARAM_INT);
+                $st->bindValue("year", $year, PDO::PARAM_INT);
+                $st->bindValue("price", $price);
+                $st->bindValue("description", $description, PDO::PARAM_STR);
+                $st->bindValue("isNew", $isNew, PDO::PARAM_BOOL);
+                $st->bindValue("imgUrl", $imgUrl, PDO::PARAM_STR);
+                $st->bindValue("phoneNumber", $phoneNumber, PDO::PARAM_INT);
+                $st->bindValue("username", $username, PDO::PARAM_STR);
+                $st->bindValue("email", $email, PDO::PARAM_STR);
+                $st->bindValue("model", $model, PDO::PARAM_STR);
+
+                $st->execute();
+                return true;
+            } catch (PDOException $e) {
+                echo $e;
+                return false;
+            }
+        }
+
+        public function deletePost($id) {
+            $sql = "DELETE FROM " . TBL_CAR_INFO . " WHERE " . CCI_ID . " LIKE :id";
+            try {
+				$st = $this->conn->prepare($sql);
+				$st->bindValue(":id", $id);
+				$st->execute();
+			
+                return true;
+            } catch (PDOException $e) {
+				return false;
+			}
+	    }
+
+        public function getAll($tableName) {
+            try {
+                $sql = "SELECT * FROM " . $tableName;
+                $st = $this->conn->prepare($sql);
+                $st->execute();
+
+                $st->setFetchMode(PDO::FETCH_ASSOC);
+                return $st->fetchAll();
+            } catch (PDOException $e) {
+                return array();
+            }
+        }
+
+        public function getUserPosts() {
+            try {
+                $sql = "SELECT * FROM " . TBL_CAR_INFO;
+                $st = $this->conn->prepare($sql);
+                $st->execute();
+
+                $st->setFetchMode(PDO::FETCH_ASSOC);
+                return $st->fetchAll();
+            } catch (PDOException $e) {
+                return array();
+            }
+        }
+
+        public function getAllPosts() {
+            try {
+                $username = $_COOKIE["username"];
+                $sql = "SELECT * FROM " . TBL_CAR_INFO . " WHERE " . CCI_USERNAME . " LIKE :username";
+                $st = $this->conn->prepare($sql);
+                $st->bindValue("username", $username, PDO::PARAM_STR);
+                $st->execute();
+
+                $st->setFetchMode(PDO::FETCH_ASSOC);
+                return $st->fetchAll();
+            } catch (PDOException $e) {
+                return array();
+            }
+        }
+
+        public function getById($id, $table) {
+            try {
+                $sql = "SELECT * FROM " . $table . " WHERE Id LIKE :id";
+                $st = $this->conn->prepare($sql);
+                $st->bindValue("id", $id);
+                $st->execute();
+
+                $st->setFetchMode(PDO::FETCH_ASSOC);
+                return $st->fetch();
+            } catch (PDOException $e) {
+                return null;
+            }
+        }
 
     }
 ?>

@@ -109,7 +109,7 @@ VALUES
     ("Hybrid/Electric"),
     ("Luxury");
 
-INSERT INTO car_body (type)
+INSERT INTO fuel (type)
 VALUES
     ("Petrol"),
     ("Dizel"),

@@ -40,12 +40,15 @@ CREATE TABLE car_info
     fuel_id         int         NOT NULL,
     car_body_id     int         NOT NULL,
     manufacturer_id int         NOT NULL,
+    model           varchar(50) NOT NULL,
     year            int         NOT NULL,
     price           float       NOT NULL,
     description     mediumtext  NOT NULL,
     is_new          boolean     NOT NULL,
+    image_url       tinytext    NOT NULL,
     
     phone_number    int         NOT NULL,
+    email           varchar(50),
 
     constraint fk_user_username
         foreign key (user)

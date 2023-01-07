@@ -77,7 +77,7 @@
                 <form method="post" action="">
                 <input type="text" name="lusername" placeholder="Username" required>
                 <input type="password" name="lpassword" placeholder="Password" required>
-                <label class="main">Remember me
+                <label class="label-checkbox">Remember me
                     <input type="checkbox" name="rememberMe">
                     <span class="checkbox"></span>
                 </label>
