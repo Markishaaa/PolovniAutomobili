@@ -92,7 +92,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/post.css">
+    <link rel="stylesheet" href="css/form.css">
     <title>Add a car</title>
 </head>
 <body>
@@ -119,7 +119,7 @@
             <select name="manufacturer">
                 <?php
                     foreach ($manufacturers as $id => $a) {
-                        echo "<option value=\"$id\">" . $a["name"] . "</option>";
+                        echo "<option value=\"".$a["id"]."\">" . $a["name"] . "</option>";
                     }
                 ?>
             </select>
@@ -131,7 +131,7 @@
             <select name="body">
                 <?php
                     foreach ($bodies as $id => $a) {
-                        echo "<option value=\"$id\">" . $a["type"] . "</option>";
+                        echo "<option value=\"".$a["id"]."\">" . $a["type"] . "</option>";
                     }
                 ?>
             </select>
@@ -140,7 +140,7 @@
             <select name="fuel">
                 <?php
                     foreach ($fuels as $id => $a) {
-                        echo "<option value=\"$id\">" . $a["type"] . "</option>";
+                        echo "<option value=\"".$a["id"]."\">" . $a["type"] . "</option>";
                     }
                 ?>
             </select>
@@ -149,7 +149,8 @@
             <input type="text" name="year" pattern="^[0-9]*$" required>
 
             <label>Information</label>
-            <textarea name="description" class="description" required></textarea>
+            <textarea name="description" class="description"
+             placeholder="mileage driven, automatic or stick transmission, car color, number of doors, number of seats..." required></textarea>
             
             <label>Is the car new</label>
             <select name="isNew">

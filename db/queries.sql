@@ -112,7 +112,7 @@ VALUES
 INSERT INTO fuel (type)
 VALUES
     ("Petrol"),
-    ("Dizel"),
+    ("Diesel"),
     ("Petrol + Gas (LPG)"),
     ("Petrol + Methane (CNG)"),
     ("Electric"),

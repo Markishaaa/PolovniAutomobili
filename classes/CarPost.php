@@ -27,23 +27,18 @@
                 $this->year = $arr["year"];
                 $this->price = $arr["price"];
                 $this->description = $arr["description"];
-                $this->isNew = $arr["isNew"];
-                $this->imgUrl = $arr["imageUrl"];
-                $this->phoneNumber = $arr["phoneNumber"];
+                $this->isNew = $arr["is_new"];
+                $this->imgUrl = $arr["image_url"];
+                $this->phoneNumber = $arr["phone_number"];
                 $this->model = $arr["model"];
                 $this->email = $arr["email"];
 
-                $this->fuelType = $this->findType($arr["fuelId"], TBL_FUEL, "type");
-                $this->bodyType = $this->findType($arr["bodyId"], TBL_CAR_BODY, "type");
-                $this->manufacturerName = $this->findType($arr["manufacturerId"], TBL_MANUFECTURER, "name");
-                $this->username = $arr["username"];
+                global $db;
+                $this->fuelType = $db->getById($arr["fuel_id"], TBL_FUEL, "type")["type"] ?? '?';
+                $this->bodyType = $db->getById($arr["car_body_id"], TBL_CAR_BODY, "type")["type"] ?? '?';
+                $this->manufacturerName = $db->getById($arr["manufacturer_id"], TBL_MANUFECTURER, "name")["name"] ?? '?';
+                $this->username = $arr["user"];
             }
-        }
-
-        private function findType($id, $table, $t) {
-            global $db;
-            $type = $db->getById($id, $table);
-            return $type[$t];
         }
 
         public function getId() {

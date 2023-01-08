@@ -5,6 +5,14 @@ body {
     font-family: Consolas;
 }
 
+.wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    /* background-color: red; */
+}
+
 h1, label {
     user-select: none;
 }

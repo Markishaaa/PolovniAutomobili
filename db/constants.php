@@ -29,6 +29,6 @@
 
     define('TBL_CAR_BODY', 'Car_body');
 
-    define('TBL_FUEL', 'FUEL');
+    define('TBL_FUEL', 'Fuel');
     
 ?>

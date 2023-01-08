@@ -1,42 +1,78 @@
-.outer {
+.card {
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container2 {
+    background-color: rgba(0, 0, 0, 0.288);
+    padding: 2px 16px;
+}
+
+.card img {
+    width: 15rem;
+    height: 10rem;
+}
+
+.card-wrapper {
     display: flex;
     justify-content: center;
-}
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 80%;
 
-.wrapper {
+    /* background-color:green; */
     margin-top: 5rem;
-    background-color: #535d63;
-    width: 70%;
-    padding: 1rem;
-    box-shadow: 5px 5px #424242;
-
-    display: flex;
-    flex-direction: column;
-
-    margin-bottom: 5rem;
 }
 
-input, select, textarea {
-    margin-top: 0;
+.card span {
+    float: right;
+    font-weight: 550;
+    opacity: 0.4;
 }
 
-label {
-    margin-top: 1rem;
-    margin-left: 5px;
-    margin-bottom: 3px;
+.name {
+    opacity: 0.7;
 }
 
-.description {
-    resize: none;
-    min-height: 8rem;
-}
-
-input[type=file]::file-selector-button {
-    margin-right: 20px;
-    border: none;
-    background: #323a4d;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
+a {
+    text-decoration: none;
     color: white;
+}
+
+.view-wrapper {
+    margin-top: 5rem;
+    background-color: rgba(17, 17, 17, 0.938);
+    min-width: 80%;
+    padding: 2rem;
+    flex-direction: column;
+}
+
+.view-wrapper h1 > span {
+    opacity: 0.4;
+    margin-left: 1rem;
+}
+
+.view-wrapper h1 > span > span {
+    float: right;
+}
+
+.view-wrapper hr {
+    opacity: 0.5;
+}
+
+.view-wrapper input {
+    color: rgb(206, 6, 6);
+    text-decoration: none;
+    width: auto;
+    background-color: transparent;
+    margin-left: 60rem;
+}
+
+.view-wrapper input:hover {
     cursor: pointer;
-  }
+}

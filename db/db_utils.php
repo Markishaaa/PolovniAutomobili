@@ -128,6 +128,7 @@
 			
                 return true;
             } catch (PDOException $e) {
+                echo $e;
 				return false;
 			}
 	    }
@@ -145,7 +146,7 @@
             }
         }
 
-        public function getUserPosts() {
+        public function getAllPosts() {
             try {
                 $sql = "SELECT * FROM " . TBL_CAR_INFO;
                 $st = $this->conn->prepare($sql);
@@ -158,7 +159,7 @@
             }
         }
 
-        public function getAllPosts() {
+        public function getUserPosts() {
             try {
                 $username = $_COOKIE["username"];
                 $sql = "SELECT * FROM " . TBL_CAR_INFO . " WHERE " . CCI_USERNAME . " LIKE :username";
@@ -173,16 +174,17 @@
             }
         }
 
-        public function getById($id, $table) {
+        public function getById($id, $table, $t) {
             try {
-                $sql = "SELECT * FROM " . $table . " WHERE Id LIKE :id";
+                $sql = "SELECT " . $t . " FROM " . $table . " WHERE " . CCI_ID  . "=:id";
                 $st = $this->conn->prepare($sql);
-                $st->bindValue("id", $id);
+                $st->bindValue("id", $id, PDO::PARAM_INT);
                 $st->execute();
 
                 $st->setFetchMode(PDO::FETCH_ASSOC);
                 return $st->fetch();
             } catch (PDOException $e) {
+                echo $e;
                 return null;
             }
         }

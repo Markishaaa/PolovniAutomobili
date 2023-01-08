@@ -1,5 +1,5 @@
 <?php
-    include_once("components.php");
+    include_once "components.php";
 ?>
 
 <!DOCTYPE html>
