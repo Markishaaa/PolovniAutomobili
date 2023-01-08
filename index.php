@@ -36,6 +36,8 @@
 <body>
     <?php
         echo navbar();
+
+        include("search.php"); 
     ?>      
 
     <div class="wrapper">

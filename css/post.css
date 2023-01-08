@@ -25,7 +25,6 @@
     gap: 1rem;
     width: 80%;
 
-    /* background-color:green; */
     margin-top: 5rem;
 }
 
@@ -50,6 +49,7 @@ a {
     min-width: 80%;
     padding: 2rem;
     flex-direction: column;
+    position: relative;
 }
 
 .view-wrapper h1 > span {
@@ -70,7 +70,9 @@ a {
     text-decoration: none;
     width: auto;
     background-color: transparent;
-    margin-left: 60rem;
+    position: absolute;
+    right: 2rem;
+    top: 0;
 }
 
 .view-wrapper input:hover {

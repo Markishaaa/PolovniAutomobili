@@ -52,7 +52,7 @@
     <div class="wrapper">
         <div class="view-wrapper">
             <?php 
-                if ($u->isMod() || $u->getUsername() == $post->getUsername()):
+                if (isset($_SESSION["user"]) && ($u->isMod() || $u->getUsername() == $post->getUsername())):
             ?>
                     <form method="post">
                         <input type="submit" name="delete" value="[delete post]" class="delete">
