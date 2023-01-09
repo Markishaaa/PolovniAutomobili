@@ -9,8 +9,6 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
-
-    /* background-color: red; */
 }
 
 h1, label {

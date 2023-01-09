@@ -58,7 +58,7 @@
         }
 
         public function getDescription() {
-            return $this->description;
+            return str_replace("\r\n", "<br>", $this->description);
         }
 
         public function getImgUrl() {
@@ -91,6 +91,10 @@
 
         public function getUsername() {
             return $this->username;
+        }
+
+        public function __toString() {
+            return $this->id;
         }
 
     }

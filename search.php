@@ -11,23 +11,58 @@
     $manufacturers = $db->getAll(TBL_MANUFECTURER);
 
     if (isset($_GET["search"])) {
-        $manuf = $_GET["manufacturer"];
-        // if ($manuf != -1) {
+        // $manuf = $_GET["manufacturer"];
+        // if ($manuf != "all") {
         //     foreach ($posts as $k => $p) {
         //         if ($p->getManufacturerName() == $manuf) {
         //             $filteredPosts[] = $p;
         //         }
         //     }
+
+        //     if (!empty($filteredPosts))
+        //         $posts = $filteredPosts;
+        //     else
+        //         $posts = array();
         // }
 
-        $fuel = $_GET["fuel"];
-        // if ($fuel != -1) {
+        // $fuel = $_GET["fuel"];
+        // if ($fuel != "all") {
+        //     $postsCount = sizeof($filteredPosts);
         //     foreach ($posts as $k => $p) {
         //         if ($p->getFuelType() == $fuel) {
         //             $filteredPosts[] = $p;
         //         }
         //     }
+
+        //     if (!empty($filteredPosts) && $postsCount != sizeof($filteredPosts))
+        //         $posts = $filteredPosts;
+        //     else
+        //         $posts = array();
         // }
+
+        // $isNew = $_GET["isNew"];
+
+        // $price = PHP_INT_MAX;
+        // if ($_GET["price"] != null) {
+        //     $price = $_GET["price"];
+        // }
+
+        // foreach ($posts as $k => $p) {
+        //     if (($isNew != "all" && $p->isNew() == $isNew) 
+        //         && $p->getPrice() <= $price && $found) {
+        //         $filteredPosts[] = $p;
+        //     }
+        // }
+
+        search();
+
+        if (!empty($posts))
+            $posts = array_unique($posts);
+    }
+
+    function search() {
+        global $posts;
+        global $filteredPosts;
 
         $isNew = $_GET["isNew"];
 
@@ -38,15 +73,65 @@
 
         foreach ($posts as $k => $p) {
             if (($isNew != "all" && $p->isNew() == $isNew) 
-                || ($fuel != "all" && $p->getFuelType() == $fuel)
-                || ($manuf != "all" && $p->getManufacturerName() == $manuf)) {
+                && $p->getPrice() <= $price) {
                 $filteredPosts[] = $p;
-            } else if ($p->getPrice() <= $price) {
+            } else if ($isNew == "all" && $p->getPrice() <= $price) {
                 $filteredPosts[] = $p;
             }
         }
-        if (!empty($filteredPosts))
+
+        if (!empty($filteredPosts)) {
             $posts = $filteredPosts;
+        } else {
+            $posts = array();
+            return false;
+        }
+
+        $filteredPosts = array();
+
+        $manuf = $_GET["manufacturer"];
+        if ($manuf != "all") {
+            foreach ($posts as $k => $p) {
+                if ($p->getManufacturerName() == $manuf) {
+                    $filteredPosts[] = $p;
+                }
+            }
+
+            if (!empty($filteredPosts))
+                $posts = $filteredPosts;
+            else {
+                $posts = array();
+                return;
+            }
+        }
+
+        $fuel = $_GET["fuel"];
+        if ($fuel != "all") {
+            $postsCount = sizeof($filteredPosts);
+            foreach ($posts as $k => $p) {
+                if ($p->getFuelType() == $fuel) {
+                    $filteredPosts[] = $p;
+                }
+            }
+
+            if (!empty($filteredPosts) && $postsCount != sizeof($filteredPosts))
+                $posts = $filteredPosts;
+            else {
+                $posts = array();
+                return;
+            }
+        }
+    }
+
+    function resolveSearch($filteredPosts) {
+        global $posts;
+        if (!empty($filteredPosts)) {
+            $posts = $filteredPosts;
+            return true;
+        } else {
+            $posts = array();
+            return false;
+        }
     }
 ?>
 

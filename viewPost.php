@@ -28,6 +28,7 @@
 
     if (isset($_POST["delete"])) {
         $success = $db->deletePost($post->getId());
+        unlink($post->getImgUrl());
         if ($success)
             header("Location: index.php");
     }

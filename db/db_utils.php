@@ -114,7 +114,6 @@
                 $st->execute();
                 return true;
             } catch (PDOException $e) {
-                echo $e;
                 return false;
             }
         }
@@ -128,7 +127,6 @@
 			
                 return true;
             } catch (PDOException $e) {
-                echo $e;
 				return false;
 			}
 	    }
